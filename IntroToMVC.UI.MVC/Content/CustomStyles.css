@@ -1,0 +1,33 @@
+﻿#mainContent
+{
+    /*position: absolute;
+    top: 10em;
+    left: 15em;
+    width: 1200px;
+    min-height: 1000px;*/
+}
+
+header
+{
+    background-color: lightgray;
+    /*margin-bottom: 20em;*/
+}
+
+.menu li a
+{
+    font-size: .8em;
+    color: black;
+}
+
+    .menu li a:hover, #logo h1 a:hover, .menu li.active a
+    {
+        background: white;
+        color: blue;
+    }
+
+footer, .copy-right
+{
+    background: #161616;
+    /*position: relative;*/
+    width: 100%;
+}

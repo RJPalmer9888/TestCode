@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "SimpleCalculator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SimpleCalculator</h2>
+
+<form method="get">
+    <div class="row">
+        <div class="col-md-3">Value 1: <input type="number" name="Number1" /></div>
+        <div class="col-md-3">
+            Operator: <select name="Function">
+                <option>Add</option>
+                <option>Subtract</option>
+                <option>Multiply</option>
+                <option>Divide</option>
+            </select>
+        </div>
+        <div class="col-md-3">Value 2: <input type="number" name="Number2" /></div>
+        <div class="col-md-1"><input type="submit" value="Calculate" /></div>
+        <div class="col-md-1">
+            <a href="@Url.Action("SimpleCalculator","ViewBagData")">
+                Reset
+            </a>
+        </div>
+    </div>
+</form>
+
+@if (Request.QueryString["Number1"] != null)
+{
+    <h2>@ViewBag.Answer</h2>
+}

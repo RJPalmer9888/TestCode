@@ -1,0 +1,109 @@
+﻿@{
+    // Razor Blocks behave like C#
+
+    /*
+     *
+     * Block comments
+     *
+     */
+
+    //  The viewBag is a dynamic variable that allows for passing a value/object between the
+    // Controller and its View OR the View and the _layout
+    // (Viewbag.Title becomes part of the <title> in the layout
+
+    ViewBag.Title = "Intro to Razor";
+}
+@*  Pass the viewbag item declared at the top to the h2. If you need to make a
+    change to the content of the title, you only have one place to do it!
+    DRY (Don't Repeat Yourself!)*@
+
+<h2>@ViewBag.Title</h2>
+
+@{
+    //We can add as many code blocks as needed throughout the view
+    //We can add as many properties as needed throughout the viewbag
+    ViewBag.Title2 = "This is a second viewbag property called Title2";
+}
+<p>ViewBag.Title2</p>
+
+<h3>Razor Description</h3>
+<p>
+    Razor is a syntax that allows for the injection of C# into an html page. Our View files have a .cshtml ending,
+    because this combination of markup and code must be rendered using the Razor View Engine in ASP.NET MVC.
+    The key transition character in Razor is the "at" symbol. Razor allows you to define Code Expressions and Code Blocks.
+    A code expression is evaluated and the results are rendered as part of the view. For example, "The current year is ".
+    Razor also supports explicit code expressions for cases where the code is too ambiguous for Razor to easily switch between code and markup.
+    For example, <span>1 + 2 = @(1 + 2)</span> is an explicit code expression because the code that needs to be evaluated is surronded by parens.
+    <br />
+    Razor also supports Code Blocks which are identified with the at symbold and the curly braces (in most cases).
+    The difference between an expression and a code block is that an expression is run and the output is rendered as part of the view.
+    However, a code block is just a section of code that gets executed. Sometimes the execution results in something being rendered on the screen, but not always.
+
+    <!-- Now use Razor to make it dynamic by adding "at"DateTime.Now.Year and "at"(1+2) above.
+        NOTE- since the code is processed Server Side, the Server could reside in a different timezone so be carefull with dates- this is a big issue -->
+    </br> </br>
+    For example, the below code is a block of code that does cause something to be rendered to the screen.
+    @{
+        var x = 4 + 5;
+    }
+
+    </br> </br>
+    If you need to escape the Razor syntax and transition back to markup, then you can wrap content in an HTML tag.
+    You can also use the at symbold and the colon. See the code block below for examples:
+    
+    @{
+        <span>This just needs to be markup (HTML)</span>
+        @:This is just plain text
+    }
+
+    <br /><br />
+    Finally, if you need to escape the at symbol to actually render it to the screen,
+    use two at symbols. For example, Twitter: @@jillstwitter.
+    <br />
+    Razor is evaluated server-side. That means that only the output of any Razor syntax will be sent to the browser, not the raw Razor syntax.
+
+</p>
+
+<p>Hyperlinks and Razor Helpers</p>
+
+@* The below is an HTML helper method because the method returns HTML markup that is rendered to the screen *@
+
+<ul>
+    <li>@Html.ActionLink("Home Page", "Index", "Home")</li>
+    <li><a href="@Url.Action("Index", "Home")" class="btn btn-warning">Home Page</a></li>
+    <li><a href="~/Home/Index">Home using Root Relative(Least preferred)</a></li>
+    <!-- Least preferred because it will bypass any logic in the controller -->
+
+</ul>
+
+@* Embed basic C# functionality - example of a c# code block *@
+
+<ul>
+    @for (int i = 0; i < 10; i++)
+    {
+        <li>@i</li>
+    }
+</ul>
+
+@*Restrict access to values on the page - based on user credentials (more on this in MVC2) - example of code blocks*@
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span>You are Logged In!</span><br />
+    @:You are Logged In!
+    //two ways to inject HTML into C# Razor code.
+
+}
+
+If you use the C# note syntax outside of a code block in the view, it will be considered text and rendered to the screen <br />
+@if (!User.Identity.IsAuthenticated)
+{
+    <span>You are Logged In!</span><br />
+    @:Hello
+    //two ways to inject HTML into C# Razor code.
+
+}
+
+
+
+

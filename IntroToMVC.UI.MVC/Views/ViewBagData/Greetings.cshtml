@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Greetings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Greetings</h2>
+
+<form method="get">
+    <div class="row">
+        <div class="col-md-4">First Name: <input type="text" name="firstName" /></div>
+        <div class="col-md-4">Last Name: <input type="text" name="lastName" /></div>
+        <div class="col-md-2">
+            <input type="submit" value="Click for your greeting!"
+                   class="btn btn-success" />
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("Greetings", "ViewBagData")">Reset</a>
+        </div>
+    </div>
+</form>
+
+@if (ViewBag.Greeting != null)
+{
+    <h2>@ViewBag.Greeting</h2>
+}

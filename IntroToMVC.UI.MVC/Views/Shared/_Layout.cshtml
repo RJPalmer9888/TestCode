@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Intro to MVC - @ViewBag.Title</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Learning, ASP.NET, ASP.NET MVC, Microsoft, Web Development" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }</script>
+    <!-- css files -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css_slider.css" rel="stylesheet"><!-- CODE 6.2b Slider css -->
+    <link href="~/Content/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="~/Content/style.css" rel='stylesheet' type='text/css' /><!-- CODE 6.2c custom css -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet"><!-- CODE 6.2d fontawesome css -->
+    <!-- //css files -->
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!-- //google fonts -->
+    <link href="~/Content/CustomStyles.css" rel="stylesheet" /> <!-- CODE 6.2e CustomStyles css -->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <!-- nav -->
+            <nav class="py-3 d-lg-flex">
+                <div id="logo">
+                    <h1> <a href="@Url.Action("Index", "Home")"><span class="fa fa-line-chart"></span> Intro to MVC </a></h1>
+                </div>
+                <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+                <input type="checkbox" id="drop" />
+                <ul class="menu ml-auto mt-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Intro To Razor", "IntroToRazor", "Home")</li>
+                    <li>@Html.ActionLink("ViewBag Data", "Index", "ViewBagData")</li>
+                    <li>@Html.ActionLink("Strongly Typed Data", "Index", "StronglyTypedData")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "StronglyTypedData")</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container mt-4 mb-4 mainContent">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", false)
+
+    <script>
+        //  Use the selector values found (or declared) in your style sheet for the active class – for the code below your stylesheet would look like: .mainmenu ul li.selected a {//code}
+        $('.menu li').each(function () {
+            //  In this example the class is attached to the li, so you must go one level further to //check the href value of the anchor tag and ensure it matches what is found in the browser URL
+            if ($(this).find('a').attr('href') == window.location.pathname) {
+                //  If they match add the correct class name. $(this) refers to the li (the last item in the DOM specified before the each function)
+                $(this).addClass('active');
+            }
+        });
+    </script>
+
+</body>
+</html>

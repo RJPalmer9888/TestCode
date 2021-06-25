@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "MVC Notes";
+}
+
+<h2>@ViewBag.newParam</h2>
+<h2>Intro to MVC</h2>
+<p>
+    In this course we will discuss the basics of MVC, components and how
+    they function together to provide a unique and fun web experience
+    for our user(s).  When this site was guilt (selecting Project/Solution)
+    we also added a reference to MVC which provided the site structure
+    and default layout and pages.  Later on we will change authentication
+    and see what the impacts are.
+</p>
+<h2>MVC Definition and Components</h2>
+<p>
+    MVC is a design pattern architecture.  It is a theory of how to build
+    software applications.  MVC Stands for Model, View, Controller.
+</p>
+<ul>
+    <li>
+        Model: Model items are contained in the Models folder.  Each
+        model represents a business object for use with the application.
+        Generally, these models are POCOS (Plain old CLR objects)/ViewModel
+        items.  The other type of model that you may see is a Domain Model,
+        and usually these will be built to <em>model</em> a table in a database.
+        They are also used to add metadata (data about data) to the associated
+        information.
+    </li>
+    <li>
+        View:  Views are contained in a folder called Views.  The view is
+        the UI (User Interface), the way we display data to our users AND
+        collect data from users (Get/Post).  There is a subfolder in the
+        Views folder called Shared.  Shared contains a couple of files,
+        but for now our concern is the one named _Layout.cshtml.  This
+        file is used to create the simple structure for the website.
+        All other (dynamic) content will be "dropped in" to this template
+        for our site.
+    </li>
+    <li>
+        Controller:  Controllers are contained in the Controllers Folder.
+        The controller is the workhorse for the application. It receives
+        the request to render forms, views, and data.  It also receives the
+        request to PROCESS forms, views, and data.  Once complete, the
+        specified controller action will return the user to the appropriate
+        view.
+    </li>
+</ul>
+<h2>MVC Site Structure (Folders/Files)</h2>
+<p>
+    When you first begin an MVC Application, the structure alone can be
+    intimidating.  You start with a lot more files than you do for a simple
+    HTML project, but these files and folders all have a specific uses. Once
+    you learn these, you will have the basics of MVC and its functionality.
+</p>
+<li>
+    The bin folder (hidden by default) - holds all references to referenced
+    .NET namespace, NuGet Package Downloads, and other projects in the solution
+    (as long as you add a reference to the UI/MVC project).
+</li>
+<li>
+    Views folder holds all UI components that are used by the end user.  Each
+    set of views is contained in a folder with the SAME NAME as the controller
+    that they are associated with.  The Views folder has a sub folder named Shared.
+</li>
+<li>
+    Shared folder contains UI components that may be utilized by more than one view.
+    Most often used components in this folder are the _Layout (The overall look/
+    feel of the website that has a place for unique content to be dropped in by
+    other views.), Error page (does not activate until the website is deployed),
+    and LoginPartial that holds components for logging and out of the website using
+    membership (authentication).
+</li>
+<li>
+    Global.asax is a C# file that manages global information for the website such
+    as, Session information, Application information, Error handling/redirecting,
+    and registry of website components.
+</li>
+<li>
+    Root web.config (there is another web.config in views folder that we do not
+    need to use).  This file is XML, it is very tempramental when it comes to spacing,
+    tabs, and hard returns.  It contains more global information for the site such as:
+    connection strings (connections to data structures) - registering classes and
+    namespaces for use, Handling session timeout periods, setting specific pages
+    for redirect when specific error codes are returned. (404, 403 forbidden, etc.)
+</li>
+</ul>
+

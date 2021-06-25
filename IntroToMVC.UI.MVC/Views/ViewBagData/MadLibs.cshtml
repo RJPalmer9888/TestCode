@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "MadLibs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MadLibs</h2>
+
+<form method="get">
+    <div class="row">
+        <div class="col-md-2">Foreign Country: <input type="text" name="tbForeignCountry" /></div>
+        <div class="col-md-2">Adjective: <input type="text" name="tbAdjective" /></div>
+        <div class="col-md-2">Animal: <input type="text" name="tbAnimal" /></div>
+        <div class="col-md-2">Verb: <input type="text" name="tbVerb" /></div>
+        <div class="col-md-2">Type of Liquid: <input type="text" name="tbTypeOfLiquid" /></div>
+        <div class="col-md-2">Place: <input type="text" name="tbPlace" /></div>
+        <div class="col-md-2">
+            <input type="submit" value="Click for your lib!"
+                   class="btn btn-success" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="@Url.Action("MadLibs", "ViewBagData")">Reset</a>
+        </div>
+    </div>
+</form>
+
+@if (ViewBag.madLib != null)
+{
+    <h2>@ViewBag.madLib</h2>
+}
